@@ -2,9 +2,17 @@
 
 input,
 textarea {
-  @apply border-2 border-gray-800;
+  @apply border-2 border-gray-800 px-[5px];
 }
 
 h1 {
   @apply text-[28px] my-[10px];
+}
+
+h2 {
+  @apply text-[20px] my-[10px];
+}
+
+button {
+  @apply border-2 border-gray-800 px-[10px];
 }

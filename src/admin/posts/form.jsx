@@ -1,10 +1,21 @@
 import React from 'react'
+import axios from 'axios'
 
-export default function PostForm()  {
-  function createPost(event) {
+export default function PostForm({ onCreatePost })  {
+  const createPostApiUrl = import.meta.env.VITE_BACKEND_ADMIN_API_URL + "/posts"
+
+  const createPost = (event) => {
     event.preventDefault()
     const { title, content } = event.target
-    console.log(content.value, title.value)
+    console.log(content.value, title.value, createPostApiUrl)
+    axios.post(createPostApiUrl, {
+      post: {
+        title: title.value,
+        content: content.value
+      }
+    }).then(response => {
+      onCreatePost(response.data)
+    })
   }
 
   return (
