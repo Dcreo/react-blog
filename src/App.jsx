@@ -10,7 +10,6 @@ function App() {
     console.warn("Post created", post)
   }
 
-
   return (
     <>
       <div className="container mx-auto px-4">
