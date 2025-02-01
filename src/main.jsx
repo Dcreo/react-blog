@@ -2,7 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
-import { BrowserRouter, Route, Routes } from "react-router"
+import { createRouter } from '@tanstack/react-router'
 import {
   useQuery,
   QueryClient,
@@ -11,14 +11,18 @@ import {
 
 const queryClient = new QueryClient()
 
+// Register the router instance for type safety
+//declare module '@tanstack/react-router' {
+  //interface Register {
+    //router: typeof router
+  //}
+//}
+
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<App />} />
-        </Routes>
-      </BrowserRouter>
+      <App />
     </QueryClientProvider>
   </StrictMode>,
 )

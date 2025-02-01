@@ -3,6 +3,10 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import PostForm from '@src/admin/posts/form'
 import { useQuery, useQueryClient } from 'react-query'
+import { RouterProvider, createRouter } from '@tanstack/react-router'
+import { routeTree } from './routeTree.gen'
+
+const router = createRouter({ routeTree })
 
 const getPosts = async () => {
   // TODO URLS to Constants
@@ -25,6 +29,7 @@ function App() {
 
   return (
     <>
+      <RouterProvider router={router} />
       <div className="container mx-auto px-4">
         <h1>React Blog 1</h1>
 

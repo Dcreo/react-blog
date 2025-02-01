@@ -3,10 +3,12 @@ import { fileURLToPath, URL } from 'node:url'
 import react from '@vitejs/plugin-react'
 import * as path from 'path'
 import tailwindcss from '@tailwindcss/vite'
+import { TanStackRouterVite } from '@tanstack/router-plugin/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
+    TanStackRouterVite({ autoCodeSplitting: true }),
     react(),
     tailwindcss(),
   ],
