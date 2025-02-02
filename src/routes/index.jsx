@@ -1,4 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
+import Posts from "@components/Posts"
 
 export const Route = createFileRoute('/')({
   component: RouteComponent,
@@ -6,6 +7,8 @@ export const Route = createFileRoute('/')({
 
 function RouteComponent() {
   return(
-    <div>Hello "/"!</div>
+    <div>
+      <Posts />
+    </div>
   )
 }
