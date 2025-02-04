@@ -21,7 +21,7 @@ export default function Posts() {
     <div className="flex flex-col gap-y-[10px]">
       {posts?.map((post, key) => {
         return(
-          <div key={key} className="border-1 border-gray-400 p-[20px]">
+          <div key={key} className="border-1 border-gray-400 p-[20px] text-bold text-[24px]">
             {post.title}
           </div>
         )
