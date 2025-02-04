@@ -4,7 +4,7 @@ import PostSearch from "@components/common/PostSearch"
 
 export default function Navigation() {
   return(
-    <div>
+    <div className="mb-[50px]">
       <nav className="flex my-[20px]">
         <Link to="/">Главная</Link>
 
