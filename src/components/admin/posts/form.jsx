@@ -34,10 +34,6 @@ export default function PostForm()  {
     })
   }
 
-  const clearForm = () => {
-
-  }
-
   return (
     <>
       <div>
