@@ -18,10 +18,10 @@ export default function Posts() {
   })
 
   return(
-    <div>
+    <div className="flex flex-col gap-y-[10px]">
       {posts?.map((post, key) => {
         return(
-          <div key={key}>
+          <div key={key} className="border-1 border-gray-400 p-[20px]">
             {post.title}
           </div>
         )
