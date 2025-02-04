@@ -7,6 +7,7 @@ export default function PostSearch() {
   const searchHandler = (e) => {
     e.preventDefault()
     setQuery(e.target.query.value)
+    console.warn("search query", e.target.query.value, query)
   }
 
   return(

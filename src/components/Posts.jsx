@@ -1,15 +1,19 @@
 import { useEffect } from "react"
 import { useQuery, useQueryClient } from 'react-query'
 import { useSearchStore } from "@store/search"
+import { compactObject } from "@utils/functions"
 
-const getPosts = async ({ params }) => {
+const getPosts = async (params = {}) => {
   // TODO URLS to Constants
+  let postsApiUrl = import.meta.env.VITE_BACKEND_ADMIN_API_URL + "/posts"
 
-  if Object.keys(params).length {
-    paramsURL = new URLSearchParams(params)
+  console.warn("work", compactObject(params))
+  if (Object.keys(params).length) {
+    let paramsURL = new URLSearchParams(params)
+    postsApiUrl = `${postsApiUrl}/?${paramsURL}`.toString()
   }
 
-  const postsApiUrl = import.meta.env.VITE_BACKEND_ADMIN_API_URL + "/posts"
+  console.warn(postsApiUrl)
   const response = await fetch(postsApiUrl)
 
   return response.json()
@@ -19,14 +23,15 @@ export default function Posts() {
   const queryClient = useQueryClient()
   const searchQuery = useSearchStore((state) => state.query)
 
-  const { data: posts } = useQuery({
+  const { data: posts, refetch } = useQuery({
     queryKey: ['posts'],
-    queryFn: getPosts,
+    // TODO serializers for camelCase to snakeCase
+    queryFn: () => getPosts({ search_query: searchQuery }),
     staleTime: 10000
   })
 
   useEffect(() => {
-    console.warn(searchQuery)
+    refetch()
   }, [searchQuery])
 
   return(
