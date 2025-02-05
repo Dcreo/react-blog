@@ -1,4 +1,5 @@
 import { useEffect } from "react"
+import { Link } from '@tanstack/react-router'
 import { useQuery, useQueryClient } from 'react-query'
 import { useSearchStore } from "@store/search"
 import { compactObject } from "@utils/functions"
@@ -34,13 +35,19 @@ export default function Posts() {
     refetch()
   }, [searchQuery])
 
+  // TODO load data progress
+
   return(
     <div className="flex flex-col gap-y-[10px]">
       {posts?.map((post, key) => {
         return(
-          <div key={key} className="border-1 border-gray-400 p-[20px] text-bold text-[24px]">
+          <Link key={key}
+                className="border-1 border-gray-400 p-[20px] text-bold text-[24px]"
+                to="/posts/$postId"
+                params={{ postId: post.id }}
+          >
             {post.title}
-          </div>
+          </Link>
         )
       })}
     </div>
