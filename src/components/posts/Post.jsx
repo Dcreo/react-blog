@@ -1,4 +1,5 @@
 import { useQuery, useQueryClient } from 'react-query'
+import Comments from "@components/comments/Comments"
 
 const getPost = async (id) => {
   // TODO URLS to Constants
@@ -24,8 +25,9 @@ export default function Post({ id }) {
     <div>
       <h1>{ post?.title }</h1>
       <div>
-          {post?.content}
+        {post?.content}
       </div>
+      <Comments />
     </div>
   )
 }
