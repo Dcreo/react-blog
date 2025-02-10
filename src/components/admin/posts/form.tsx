@@ -1,9 +1,9 @@
 import { React, useRef } from 'react'
 import { useQueryClient, useMutation } from 'react-query'
 import axios from 'axios'
+import IPost from "@types/posts"
 
-const createPost = async (newPost) => {
-  console.warn(newPost)
+const createPost = async (newPost: IPost) => {
   const createPostApiUrl = import.meta.env.VITE_BACKEND_ADMIN_API_URL + "/posts"
 
   const response = await fetch(createPostApiUrl, {
@@ -30,7 +30,8 @@ export default function PostForm()  {
 
     mutate({
       title: e.target.title.value,
-      content: e.target.content.value
+      content: e.target.content.value,
+      test: "asd"
     })
   }
 
