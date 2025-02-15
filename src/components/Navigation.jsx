@@ -10,6 +10,7 @@ export default function Navigation() {
 
         <div className="ml-auto flex gap-x-[30px]">
           <PostSearch />
+            <Link to="/auth/signup">Регистрация</Link>
           <Link to="/admin">Управление</Link>
         </div>
       </nav>
