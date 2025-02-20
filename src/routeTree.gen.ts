@@ -17,6 +17,7 @@ import { Route as PostsIndexImport } from './routes/posts/index'
 import { Route as AdminIndexImport } from './routes/admin/index'
 import { Route as PostsPostIdImport } from './routes/posts/$postId'
 import { Route as AuthSignupIndexImport } from './routes/auth/signup/index'
+import { Route as AuthSigninIndexImport } from './routes/auth/signin/index'
 
 // Create/Update Routes
 
@@ -53,6 +54,12 @@ const PostsPostIdRoute = PostsPostIdImport.update({
 const AuthSignupIndexRoute = AuthSignupIndexImport.update({
   id: '/auth/signup/',
   path: '/auth/signup/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const AuthSigninIndexRoute = AuthSigninIndexImport.update({
+  id: '/auth/signin/',
+  path: '/auth/signin/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -95,6 +102,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PostsIndexImport
       parentRoute: typeof rootRoute
     }
+    '/auth/signin/': {
+      id: '/auth/signin/'
+      path: '/auth/signin'
+      fullPath: '/auth/signin'
+      preLoaderRoute: typeof AuthSigninIndexImport
+      parentRoute: typeof rootRoute
+    }
     '/auth/signup/': {
       id: '/auth/signup/'
       path: '/auth/signup'
@@ -113,6 +127,7 @@ export interface FileRoutesByFullPath {
   '/posts/$postId': typeof PostsPostIdRoute
   '/admin': typeof AdminIndexRoute
   '/posts': typeof PostsIndexRoute
+  '/auth/signin': typeof AuthSigninIndexRoute
   '/auth/signup': typeof AuthSignupIndexRoute
 }
 
@@ -122,6 +137,7 @@ export interface FileRoutesByTo {
   '/posts/$postId': typeof PostsPostIdRoute
   '/admin': typeof AdminIndexRoute
   '/posts': typeof PostsIndexRoute
+  '/auth/signin': typeof AuthSigninIndexRoute
   '/auth/signup': typeof AuthSignupIndexRoute
 }
 
@@ -132,6 +148,7 @@ export interface FileRoutesById {
   '/posts/$postId': typeof PostsPostIdRoute
   '/admin/': typeof AdminIndexRoute
   '/posts/': typeof PostsIndexRoute
+  '/auth/signin/': typeof AuthSigninIndexRoute
   '/auth/signup/': typeof AuthSignupIndexRoute
 }
 
@@ -143,9 +160,17 @@ export interface FileRouteTypes {
     | '/posts/$postId'
     | '/admin'
     | '/posts'
+    | '/auth/signin'
     | '/auth/signup'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/posts/$postId' | '/admin' | '/posts' | '/auth/signup'
+  to:
+    | '/'
+    | '/about'
+    | '/posts/$postId'
+    | '/admin'
+    | '/posts'
+    | '/auth/signin'
+    | '/auth/signup'
   id:
     | '__root__'
     | '/'
@@ -153,6 +178,7 @@ export interface FileRouteTypes {
     | '/posts/$postId'
     | '/admin/'
     | '/posts/'
+    | '/auth/signin/'
     | '/auth/signup/'
   fileRoutesById: FileRoutesById
 }
@@ -163,6 +189,7 @@ export interface RootRouteChildren {
   PostsPostIdRoute: typeof PostsPostIdRoute
   AdminIndexRoute: typeof AdminIndexRoute
   PostsIndexRoute: typeof PostsIndexRoute
+  AuthSigninIndexRoute: typeof AuthSigninIndexRoute
   AuthSignupIndexRoute: typeof AuthSignupIndexRoute
 }
 
@@ -172,6 +199,7 @@ const rootRouteChildren: RootRouteChildren = {
   PostsPostIdRoute: PostsPostIdRoute,
   AdminIndexRoute: AdminIndexRoute,
   PostsIndexRoute: PostsIndexRoute,
+  AuthSigninIndexRoute: AuthSigninIndexRoute,
   AuthSignupIndexRoute: AuthSignupIndexRoute,
 }
 
@@ -190,6 +218,7 @@ export const routeTree = rootRoute
         "/posts/$postId",
         "/admin/",
         "/posts/",
+        "/auth/signin/",
         "/auth/signup/"
       ]
     },
@@ -207,6 +236,9 @@ export const routeTree = rootRoute
     },
     "/posts/": {
       "filePath": "posts/index.jsx"
+    },
+    "/auth/signin/": {
+      "filePath": "auth/signin/index.tsx"
     },
     "/auth/signup/": {
       "filePath": "auth/signup/index.tsx"
