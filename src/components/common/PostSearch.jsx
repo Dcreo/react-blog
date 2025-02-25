@@ -1,4 +1,4 @@
-import { useSearchStore } from "@store/search"
+import { useSearchStore } from "@app/store"
 
 export default function PostSearch() {
   const query = useSearchStore((state) => state.query)

@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { Link } from '@tanstack/react-router'
 import { useQuery, useQueryClient } from 'react-query'
-import { useSearchStore } from "@store/search"
+import { useSearchStore } from "@app/store"
 import { compactObject } from "@shared/lib"
 
 const getPosts = async (params = {}) => {
