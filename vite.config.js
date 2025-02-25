@@ -13,6 +13,7 @@ export default defineConfig({
     tailwindcss(),
   ],
   resolve: {
+    // TODO change to cycle
     alias: {
       '@src': fileURLToPath(new URL('./src', import.meta.url)),
       '@components': fileURLToPath(new URL('./src/components', import.meta.url)),
@@ -20,6 +21,7 @@ export default defineConfig({
       '@utils': fileURLToPath(new URL('./src/utils', import.meta.url)),
       '@types': fileURLToPath(new URL('./src/types', import.meta.url)),
       '@widgets': fileURLToPath(new URL('./src/widgets', import.meta.url)),
+      '@shared': fileURLToPath(new URL('./src/shared', import.meta.url)),
     }
   }
    //resolve: {

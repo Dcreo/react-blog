@@ -2,7 +2,7 @@ import { useEffect } from "react"
 import { Link } from '@tanstack/react-router'
 import { useQuery, useQueryClient } from 'react-query'
 import { useSearchStore } from "@store/search"
-import { compactObject } from "@utils/functions"
+import { compactObject } from "@shared/lib"
 
 const getPosts = async (params = {}) => {
   // TODO URLS to Constants
