@@ -21,6 +21,7 @@ export default defineConfig({
       '@types': fileURLToPath(new URL('./src/types', import.meta.url)),
       '@widgets': fileURLToPath(new URL('./src/widgets', import.meta.url)),
       '@shared': fileURLToPath(new URL('./src/shared', import.meta.url)),
+      '@pages': fileURLToPath(new URL('./src/pages', import.meta.url)),
     }
   }
    //resolve: {
