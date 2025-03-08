@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import Post from "@components/posts/Post"
+import { PostPage } from "@pages/PostPage";
 
 export const Route = createFileRoute('/posts/$postId')({
   component: RouteComponent,
@@ -10,7 +10,7 @@ function RouteComponent() {
 
   return(
     <div>
-      <Post id={postId} />
+      <PostPage id={postId} />
     </div>
   )
 }
